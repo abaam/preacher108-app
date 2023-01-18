@@ -10,10 +10,10 @@
       </li>
 
       <li class="nav-item">
-        <router-link to="/products" class="nav-link">
+        <router-link to="/students" class="nav-link">
           <i class="nav-icon fas fa-list orange"></i>
           <p>
-            Product
+            Students
           </p>
         </router-link>
       </li>
@@ -41,15 +41,15 @@
         <ul class="nav nav-treeview">
 
           <li class="nav-item">
-            <router-link to="/product/category" class="nav-link">
+            <router-link to="/student/category" class="nav-link">
               <i class="nav-icon fas fa-list-ol green"></i>
               <p>
-                Category
+                Status
               </p>
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/product/tag" class="nav-link">
+            <router-link to="/student/tag" class="nav-link">
               <i class="nav-icon fas fa-tags green"></i>
               <p>
                 Tags

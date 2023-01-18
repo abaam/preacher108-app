@@ -11,9 +11,11 @@ import moment from 'moment';
 
 import { Form, HasError, AlertError } from 'vform';
 window.Form = Form;
-
 import Gate from "./Gate";
+
 Vue.prototype.$gate = new Gate(window.user);
+Vue.prototype.$test = 1;
+console.log(Vue.prototype.$test);
 
 import Swal from 'sweetalert2';
 
@@ -49,6 +51,7 @@ Vue.component(AlertError.name, AlertError)
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import routes from './routes';
+import Vue from 'vue';
 
 const router = new VueRouter({
     mode: 'history',

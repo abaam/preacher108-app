@@ -99,4 +99,11 @@ class UserController extends BaseController
 
         return $this->sendResponse([$user], 'User has been Deleted');
     }
+
+    public function list()
+    {
+        $users =  $users = User::get(['name', 'id']);
+
+        return $this->sendResponse($users, 'Users list');
+    }
 }
