@@ -7,7 +7,7 @@
         
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Product List</h3>
+                <h3 class="card-title">Student List</h3>
 
                 <div class="card-tools">
                   
@@ -34,7 +34,7 @@
                   <tbody>
                      <tr v-for="student in students.data" :key="student.id">
 
-                      <td>{{student.id}}</td>
+                      <td><router-link to="/events/student" class="nav-link">{{student.id}}</router-link></td>
                       <td>{{student.name}}</td>
                       <td>{{student.description | truncate(30, '...')}}</td>
                       <td>{{student.category.name}}</td>

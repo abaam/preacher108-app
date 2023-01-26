@@ -108,10 +108,10 @@
   <footer class="main-footer">
     {{-- To the right --}}
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.0
+      <b>Version</b> Beta 0.1
     </div>
     {{-- Default to the left --}}
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2023 <a href="">AbaamLab</a>.</strong> All rights reserved.
   </footer>
 </div>
 {{-- ./wrapper --}}

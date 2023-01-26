@@ -25,9 +25,24 @@
             <p>Users</p>
           </router-link>
         </li>
+        <li class="nav-item">
+          <router-link to="/events" class="nav-link">
+            <i class="fa fa-calendar nav-icon blue"></i>
+            <p>Events / Classes</p>
+          </router-link>
+      </li>
       @endcan
+      
 
       
+      @can('isUser')
+      <li class="nav-item">
+          <router-link to="/events/teacher" class="nav-link">
+            <i class="fa fa-calendar nav-icon blue"></i>
+            <p>Events / Classes</p>
+          </router-link>
+      </li>
+      @endcan
 
       @can('isAdmin')
       <li class="nav-item has-treeview">

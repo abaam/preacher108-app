@@ -4,13 +4,13 @@
             <div class="row ">
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box">
-                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">CPU Traffic</span>
+                            <span class="info-box-text">No of Teachers</span>
                             <span class="info-box-number">
                             10
-                            <small>%</small>
+                            <small></small>
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -23,7 +23,7 @@
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Likes</span>
+                            <span class="info-box-text">No of Students</span>
                             <span class="info-box-number">41,410</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -37,11 +37,11 @@
 
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="info-box mb-3">
-                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-calendar"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">Sales</span>
-                            <span class="info-box-number">760</span>
+                            <span class="info-box-text">Events Today</span>
+                            <span class="info-box-number">6</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -53,8 +53,8 @@
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">New Members</span>
-                            <span class="info-box-number">2,000</span>
+                            <span class="info-box-text">New Student</span>
+                            <span class="info-box-number">4</span>
                         </div>
                     <!-- /.info-box-content -->
                     </div>
@@ -70,7 +70,7 @@
                     <!-- MAP & BOX PANE -->
                     <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Latest Orders (Demo)</h3>
+                        <h3 class="card-title">Current Events</h3>
 
                         <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -87,10 +87,10 @@
                         <table class="table m-0">
                             <thead>
                                 <tr>
-                                    <th>Order ID</th>
-                                    <th>Item</th>
-                                    <th>Status</th>
-                                    <th>Popularity</th>
+                                    <th>Event ID</th>
+                                    <th>Teacher</th>
+                                    <th>Student</th>
+                                    <th>Class</th>
                                 </tr>
                             </thead>
                             <tbody>
