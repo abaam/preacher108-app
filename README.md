@@ -2,9 +2,6 @@
 # Preacher App
 
 
-[![Build Status](https://dev.azure.com/anowarhossain/laravel-vue-crud-starter/_apis/build/status/AnowarCST.laravel-vue-crud-starter?branchName=master)](https://dev.azure.com/anowarhossain/laravel-vue-crud-starter/_build/latest?definitionId=6&branchName=master)
-
-
 ## About Repository
 
 A very simple Laravel 8 + Vue 2 + AdminLTE 3 based Curd Starter template for SPA Application.
@@ -81,8 +78,7 @@ vendor/bin/phpunit --coverage-html reports/
 A `reports` directory has been created for code coverage report. Open the dashboard.html.
 
 
-## Credit
-This repository is motivated by [Hujjat/laravStart](https://github.com/Hujjat/laravStart) and his awesome video tutorial in [Youtube](https://www.youtube.com/playlist?list=PLB4AdipoHpxaHDLIaMdtro1eXnQtl_UvE).
+
 
 ## License
 
