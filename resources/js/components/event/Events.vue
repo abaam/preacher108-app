@@ -119,8 +119,8 @@
                           </div>
                           <div class="form-group">
                                 <label for="example-datepicker">Choose a date</label>
-                                <b-form-datepicker id="example-datepicker" v-model="value" class="mb-2"></b-form-datepicker>
-                                <p>{{ value }}</p>
+                                <v-calendar></v-calendar>
+                                <v-date-picker v-model="selectedDate" />
                           </div>
                           <div class="form-group">
                               <label>Teacher</label>
@@ -148,12 +148,17 @@
   
   <script>
       import VueTagsInput from '@johmun/vue-tags-input';
-  
+      import Calendar from 'v-calendar/lib/components/calendar.umd';
+      import DatePicker from 'v-calendar/lib/components/date-picker.umd';
+      
       export default {
         components: {
             VueTagsInput,
+            Calendar,
+            DatePicker
           },
           data () {
+            
               return {
                   editmode: false,
                   students : {},
@@ -173,6 +178,7 @@
                   users:[],
                   tag:  '',
                   autocompleteItems: [],
+                  selectedDate: null,
               }
           },
           methods: {
