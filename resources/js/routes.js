@@ -9,5 +9,5 @@ export default [
     { path: '*', component: require('./components/NotFound.vue').default },
     { path: '/events', component: require('./components/event/events.vue').default },
     { path: '/events/teacher', component: require('./components/event/eventsteacher.vue').default },
-    { path: '/events/student', component: require('./components/event/eventsstudent.vue').default },
+    { path: '/events/student/{{student.id}}', component: require('./components/event/eventsstudent.vue').default },
 ];

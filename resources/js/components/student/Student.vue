@@ -34,7 +34,7 @@
                   <tbody>
                      <tr v-for="student in students.data" :key="student.id">
 
-                      <td><router-link to="/events/student" class="nav-link">{{student.id}}</router-link></td>
+                      <td><router-link v-bind:to="'/events/student/'+student.id" class="nav-link">{{student.id}}</router-link></td>
                       <td>{{student.name}}</td>
                       <td>{{student.description | truncate(30, '...')}}</td>
                       <td>{{student.category.name}}</td>
