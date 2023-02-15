@@ -102,7 +102,7 @@ class UserController extends BaseController
 
     public function list()
     {
-        $users =  $users = User::get(['name', 'id']);
+        $users =  User::get(['name', 'id']);
 
         return $this->sendResponse($users, 'Users list');
     }

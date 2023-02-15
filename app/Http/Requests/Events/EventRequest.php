@@ -13,7 +13,7 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,10 @@ class EventRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        if ($this->isMethod('post')) {
+            return $this->createRules();
+        } elseif ($this->isMethod('put')) {
+            return $this->updateRules();
+        }
     }
 }

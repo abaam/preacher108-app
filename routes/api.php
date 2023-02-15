@@ -34,11 +34,14 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::get('user/list', 'UserController@list');
     Route::get('category/list', 'CategoryController@list');
     Route::post('student/upload', 'StudentController@upload');
+    Route::get('event/studentList', 'EventController@studentList');
+    Route::get('event/teacherEvents', 'EventController@teacherEvents');
 
     Route::apiResources([
         'user' => 'UserController',
         'student' => 'StudentController',
         'category' => 'CategoryController',
+        'event'=> 'EventController',
         'tag' => 'TagController',
     ]);
 });

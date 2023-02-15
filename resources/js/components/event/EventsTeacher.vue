@@ -23,31 +23,31 @@
                     <thead>
                       <tr>
                         <th>ID</th>
-                        <th>Name</th>
+                        <th>Student Name</th>
                         <th>Description</th>
-                        <th>Status</th>
-                        <th>Address</th>
-                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Time Start</th>
+                        <th>Time End</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                       <tr v-for="student in students.data" :key="student.id">
+                       <tr v-for="event in events.data" :key="event.id">
   
-                        <td>{{student.id}}</td>
-                        <td>{{student.name}}</td>
-                        <td>{{student.description | truncate(30, '...')}}</td>
-                        <td>{{student.category.name}}</td>
-                        <td>{{student.address}}</td>
-                        <!-- <td><img v-bind:src="'/' + student.photo" width="100" alt="student"></td> -->
-                        <td></td>
+                        <td>{{event.id}}</td>
+                        <td>{{event.student_id}}</td>
+                        <td>{{event.description | truncate(30, '...')}}</td>
+                        <td>{{event.event_date}}</td>
+                        <td>{{event.even_start}}</td>
+                        
+                        <td>{{event.event_end }}</td>
                         <td>
                           
                           <a href="#" @click="editModal(student)">
                               <i class="fa fa-edit blue"></i>
                           </a>
                           /
-                          <a href="#" @click="deleteProduct(student.id)">
+                          <a href="#" @click="deleteProduct(event.id)">
                               <i class="fa fa-trash red"></i>
                           </a>
                         </td>
@@ -57,7 +57,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <pagination :data="students" @pagination-change-page="getResults"></pagination>
+                    <pagination :data="events" @pagination-change-page="getResults"></pagination>
                 </div>
               </div>
               <!-- /.card -->
@@ -151,22 +151,19 @@
           data () {
               return {
                   editmode: false,
-                  students : {},
+                  events : {},
                   form: new Form({
                       id : '',
-                      category : '',
-                      name: '',
                       description: '',
-                      tags:  [],
-                      photo: '',
-                      category_id: '',
+                      note:  '',
+                      student_id: '',
                       user_id:'',
-                      address: '',
-                      photoUrl: '',
+                      start_event: '',
+                      end_event: '',
                   }),
                   categories: [],
                   users:[],
-                  tag:  '',
+                  students:  [],
                   autocompleteItems: [],
               }
           },
@@ -176,28 +173,23 @@
   
                 this.$Progress.start();
                 
-                axios.get('api/student?page=' + page).then(({ data }) => (this.students = data.data));
+                axios.get('/api/event?page=' + page).then(({ data }) => (this.events = data.data));
   
                 this.$Progress.finish();
             },
-            loadStudents(){
-  
+            loadEvents(){
               // if(this.$gate.isAdmin()){
-                axios.get("api/student").then(({ data }) => (this.students = data.data));
+                axios.get("/api/event").then(({ data }) => (this.events = data.data));
               // }
             },
             loadCategories(){
                 axios.get("/api/category/list").then(({ data }) => (this.categories = data.data));
             },
-            loadTags(){
-                axios.get("/api/tag/list").then(response => {
-                    this.autocompleteItems = response.data.data.map(a => {
-                        return { text: a.name, id: a.id };
-                    });
-                }).catch(() => console.warn('Oh. Something went wrong'));
-            },
             loadUsers(){
                 axios.get("/api/user/list").then(({ data }) => (this.users = data.data));
+            },
+            loadStudents(){
+              axios.get("/api/event/studentList").then(({ data }) => (this.students = data.data));
             },
             editModal(student){
                 this.editmode = true;
@@ -223,7 +215,7 @@
                           title: data.data.message
                       });
                     this.$Progress.finish();
-                    this.loadStudents();
+                    this.loadEvents();
   
                   } else {
                     Toast.fire({
@@ -255,7 +247,7 @@
                     this.$Progress.finish();
                         //  Fire.$emit('AfterCreate');
   
-                    this.loadStudents();
+                    this.loadEvents();
                 })
                 .catch(() => {
                     this.$Progress.fail();
@@ -281,7 +273,7 @@
                                         'success'
                                         );
                                     // Fire.$emit('AfterCreate');
-                                    this.loadStudents();
+                                    this.loadEvents();
                                 }).catch((data)=> {
                                     Swal.fire("Failed!", data.message, "warning");
                                 });
@@ -296,10 +288,10 @@
           created() {
               this.$Progress.start();
   
-              this.loadStudents();
+              this.loadEvents();
               this.loadCategories();
-              this.loadTags();
               this.loadUsers();
+              this.loadStudents();
               this.$Progress.finish();
           },
           filters: {

@@ -97,6 +97,18 @@
                             <has-error :form="form" field="address"></has-error>
                         </div>
                         <div class="form-group">
+                            <label>Phone Numpber</label>
+                            <input v-model="form.phone" type="text" name="phone"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('phone') }">
+                            <has-error :form="form" field="phone"></has-error>
+                        </div>
+                        <div class="form-group">
+                            <label>Facebook Link</label>
+                            <input v-model="form.facebook" type="text" name="facebook"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('facebook') }">
+                            <has-error :form="form" field="facebook"></has-error>
+                        </div>
+                        <div class="form-group">
 
                             <label>Category</label>
                             <select class="form-control" v-model="form.category_id">
