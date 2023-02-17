@@ -104,9 +104,9 @@
                         </div>
                         <div class="form-group">
                             <label>Facebook Link</label>
-                            <input v-model="form.facebook" type="text" name="facebook"
-                                class="form-control" :class="{ 'is-invalid': form.errors.has('facebook') }">
-                            <has-error :form="form" field="facebook"></has-error>
+                            <input v-model="form.fb_link" type="text" name="fb_link"
+                                class="form-control" :class="{ 'is-invalid': form.errors.has('fb_link') }">
+                            <has-error :form="form" field="fb_link"></has-error>
                         </div>
                         <div class="form-group">
 
@@ -129,7 +129,7 @@
                             />
                             <has-error :form="form" field="tags"></has-error>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label>Teacher</label>
                             <select class="form-control" v-model="form.user_id">
                               <option 
@@ -175,6 +175,8 @@
                     user_id:'',
                     address: '',
                     photoUrl: '',
+                    fb_link: '',
+                    phone:'',
                 }),
                 categories: [],
                 users:[],

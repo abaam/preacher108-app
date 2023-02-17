@@ -13,7 +13,10 @@ class AddFacebookPhone extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('students', function (Blueprint $table) {
+            $table->string('fb_link')->nullable();
+            $table->string('phone')->nullable();
+        });
     }
 
     /**
@@ -23,6 +26,7 @@ class AddFacebookPhone extends Migration
      */
     public function down()
     {
-        //
+        $table->dropColumn('fb_link');
+        $table->dropColumn('phone');
     }
 }

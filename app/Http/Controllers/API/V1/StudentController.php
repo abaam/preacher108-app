@@ -32,6 +32,7 @@ class StudentController extends BaseController
     public function index()
     {
      
+        //var_dump(Auth::id());
         if(Auth::user()->type == 'admin'){
             $students = $this->student->latest()->with('category', 'tags')->paginate(10);
         }else{
@@ -50,12 +51,15 @@ class StudentController extends BaseController
      */
     public function store(StudentRequest $request)
     {
+
         $student = $this->student->create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'address' => $request->get('address'),
             'category_id' => $request->get('category_id'),
             'user_id' => $request->get('user_id'),
+            'fb_link' => $request->get('fb_link'),
+            'phone' => $request->get('phone'),
         ]);
 
         // update pivot table
