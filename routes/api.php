@@ -36,6 +36,7 @@ Route::namespace('App\\Http\\Controllers\\API\V1')->group(function () {
     Route::post('student/upload', 'StudentController@upload');
     Route::get('event/studentList', 'EventController@studentList');
     Route::get('event/teacherEvents', 'EventController@teacherEvents');
+    Route::get('student/events/{id}', 'StudentController@test');
 
     Route::apiResources([
         'user' => 'UserController',

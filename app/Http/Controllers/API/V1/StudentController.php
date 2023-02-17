@@ -6,6 +6,7 @@ use App\Http\Requests\Students\StudentRequest;
 use App\Models\Student;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class StudentController extends BaseController
@@ -147,5 +148,13 @@ class StudentController extends BaseController
         $request->file->move(public_path('upload'), $fileName);
 
         return response()->json(['success' => true]);
+    }
+
+    public function test(Request $request){
+        $id = $request->segment(4);
+        $student = $this->student->with(['category', 'tags'])->findOrFail($id);
+
+        return $this->sendResponse($student, 'Student Details');
+        
     }
 }

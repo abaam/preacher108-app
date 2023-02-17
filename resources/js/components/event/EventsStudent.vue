@@ -1,319 +1,271 @@
 <template>
-    <section class="content">
+  <section class="content">
       <div class="container-fluid">
-          <div class="row">
-  
-            <div class="col-12">
-          
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Students Event Calendar</h3>
-  
-                  <div class="card-tools">
-                    
-                    <button type="button" class="btn btn-sm btn-primary" @click="newModal">
-                        <i class="fa fa-plus-square"></i>
-                        Add New
-                    </button>
+          <div class="row " >
+              <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box">
+                      <span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
+
+                      <div class="info-box-content">
+                          <span class="info-box-text">Name</span>
+                          <span class="info-box-number">
+                            {{students.name}}
+                          <small></small>
+                          </span>
+                      </div>
+                      <!-- /.info-box-content -->
                   </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Status</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                       <tr v-for="student in students.data" :key="student.id">
-  
-                        <td>{{student.id}}</td>
-                        <td>{{student.name}}</td>
-                        <td>{{student.description | truncate(30, '...')}}</td>
-                        <td>{{student.category.name}}</td>
-                        <td>{{student.address}}</td>
-                        <!-- <td><img v-bind:src="'/' + student.photo" width="100" alt="student"></td> -->
-                        <td></td>
-                        <td>
-                          
-                          <a href="#" @click="editModal(student)">
-                              <i class="fa fa-edit blue"></i>
-                          </a>
-                          /
-                          <a href="#" @click="deleteProduct(student.id)">
-                              <i class="fa fa-trash red"></i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <pagination :data="students" @pagination-change-page="getResults"></pagination>
-                </div>
+                  <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                      <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                      <div class="info-box-content">
+                          <span class="info-box-text">Phone Number</span>
+                          <span class="info-box-number">{{students.phone}}</span>
+                      </div>
+                      <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+
+              <!-- fix for small devices only -->
+              <div class="clearfix hidden-md-up"></div>
+
+              <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                      <span class="info-box-icon bg-success elevation-1"><i class="fas fa-calendar"></i></span>
+
+                      <div class="info-box-content">
+                          <span class="info-box-text">Address</span>
+                          <span class="info-box-number">{{students.address}}</span>
+                      </div>
+                      <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                      <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                      <div class="info-box-content">
+                          <span class="info-box-text">Facebook Link</span>
+                          <span class="info-box-text">{{students.fb_link}}</span>
+                      </div>
+                  <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+              </div>
+          <!-- /.col -->
+          </div>
+          <!-- /.row -->
+
+          <div class="row">
+              <!-- Left col -->
+              <div class="col-md-8">
+                  <!-- MAP & BOX PANE -->
+                  <div class="card">
+                  <div class="card-header">
+                      <h3 class="card-title">Current Events</h3>
+
+                      <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                          <i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-tool" data-card-widget="remove">
+                          <i class="fas fa-times"></i>
+                      </button>
+                      </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body p-0">
+                      <div class="table-responsive">
+                      <table class="table m-0">
+                          <thead>
+                              <tr>
+                                  <th>Event ID</th>
+                                  <th>Teacher</th>
+                                  <th>Student</th>
+                                  <th>Class</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                  <td>Call of Duty IV</td>
+                                  <td><span class="badge badge-success">Shipped</span></td>
+                                  <td>
+                                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                  <td>Samsung Smart TV</td>
+                                  <td><span class="badge badge-warning">Pending</span></td>
+                                  <td>
+                                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                  <td>iPhone 6 Plus</td>
+                                  <td><span class="badge badge-danger">Delivered</span></td>
+                                  <td>
+                                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                  <td>Samsung Smart TV</td>
+                                  <td><span class="badge badge-info">Processing</span></td>
+                                  <td>
+                                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                  <td>Samsung Smart TV</td>
+                                  <td><span class="badge badge-warning">Pending</span></td>
+                                  <td>
+                                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                  <td>iPhone 6 Plus</td>
+                                  <td><span class="badge badge-danger">Delivered</span></td>
+                                  <td>
+                                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      </div>
+                  </div>
+              <!-- /.card-body -->
               </div>
               <!-- /.card -->
-            </div>
+              <!-- /.card -->
           </div>
-  
-          <!-- Modal -->
-          <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" v-show="!editmode">Create New Student</h5>
-                      <h5 class="modal-title" v-show="editmode">Edit Product</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-  
-                  <form @submit.prevent="editmode ? updateProduct() : createProduct()">
-                      <div class="modal-body">
-                          <div class="form-group">
-                              <label>Name</label>
-                              <input v-model="form.name" type="text" name="name"
-                                  class="form-control" :class="{ 'is-invalid': form.errors.has('name') }">
-                              <has-error :form="form" field="name"></has-error>
-                          </div>
-                          <div class="form-group">
-                              <label>Description</label>
-                              <input v-model="form.description" type="text" name="description"
-                                  class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
-                              <has-error :form="form" field="description"></has-error>
-                          </div>
-                          <div class="form-group">
-                              <label>Address</label>
-                              <input v-model="form.address" type="text" name="address"
-                                  class="form-control" :class="{ 'is-invalid': form.errors.has('address') }">
-                              <has-error :form="form" field="address"></has-error>
-                          </div>
-                          <div class="form-group">
-  
-                              <label>Category</label>
-                              <select class="form-control" v-model="form.category_id">
-                                <option 
-                                    v-for="(cat,index) in categories" :key="index"
-                                    :value="index"
-                                    :selected="index == form.category_id">{{ cat }}</option>
-                              </select>
-                              <has-error :form="form" field="category_id"></has-error>
-                          </div>
-                          <div class="form-group">
-                              <label>Tags</label>
-                              <vue-tags-input
-                                v-model="form.tag"
-                                :tags="form.tags"
-                                :autocomplete-items="filteredItems"
-                                @tags-changed="newTags => form.tags = newTags"
-                              />
-                              <has-error :form="form" field="tags"></has-error>
-                          </div>
-                          <div class="form-group">
-                              <label>Teacher</label>
-                              <select class="form-control" v-model="form.user_id">
-                                <option 
-                                    v-for="(uname,index) in users" :key="index"
-                                    :value="uname.id"
-                                    :selected="uname.id == form.user_id">{{ uname.name }}</option>
-                              </select>
-                              <has-error :form="form" field="user_id"></has-error>
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button v-show="editmode" type="submit" class="btn btn-success">Update</button>
-                          <button v-show="!editmode" type="submit" class="btn btn-primary">Create</button>
-                      </div>
-                    </form>
-                  </div>
+          <!-- /.col -->
+
+          <div class="col-md-4">
+              <!-- Info Boxes Style 2 -->
+              <div class="info-box mb-3 bg-secondary">
+              <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+              <div class="info-box-content">
+                  <span class="info-box-text">Description</span>
+                  <span class="info-box-number">{{ students.description }}</span>
               </div>
+              <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+              <div class="info-box mb-3 bg-success">
+              <span class="info-box-icon"><i class="far fa-heart"></i></span>
+
+              <div class="info-box-content">
+                  <span class="info-box-text">Mentions</span>
+                  <span class="info-box-number">92,050</span>
+              </div>
+              <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+              <div class="info-box mb-3 bg-danger">
+              <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
+
+              <div class="info-box-content">
+                  <span class="info-box-text">Downloads</span>
+                  <span class="info-box-number">114,381</span>
+              </div>
+              <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+              <div class="info-box mb-3 bg-info">
+              <span class="info-box-icon"><i class="far fa-comment"></i></span>
+
+              <div class="info-box-content">
+                  <span class="info-box-text">Direct Messages</span>
+                  <span class="info-box-number">163,921</span>
+              </div>
+              <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
           </div>
-      </div>
-    </section>
-  </template>
-  
-  <script>
-      import VueTagsInput from '@johmun/vue-tags-input';
-  
-      export default {
-        components: {
-            VueTagsInput,
+          <!-- /.col -->
+          </div>
+          <!-- /.row -->
+      </div><!--/. container-fluid -->
+  </section>
+</template>
+<script>
+    import VueTagsInput from '@johmun/vue-tags-input';
+   
+    var current_url = window.location.href;
+    const firstSegment = (new URL(current_url)).pathname.split('/')[3];
+    
+    const student_id = parseInt(firstSegment);
+    export default {
+      components: {
+          
+        },
+        data () {
+            return {
+                editmode: false,
+                students : {},
+                form: new Form({
+                    id : '',
+                    category : '',
+                    name: '',
+                    description: '',
+                    tags:  [],
+                    photo: '',
+                    category_id: '',
+                    user_id:'',
+                    address: '',
+                    photoUrl: '',
+                    fb_link: '',
+                    phone:'',
+                }),
+                categories: [],
+                users:[],
+                tag:  '',
+                autocompleteItems: [],
+            }
+        },
+        methods: {
+          loadStudents(){
+            console.log(student_id);
+            // if(this.$gate.isAdmin()){
+              axios.get("/api/student/events/"+student_id).then(({ data }) => (this.students = data.data));
+            // }
           },
-          data () {
-              return {
-                  editmode: false,
-                  students : {},
-                  form: new Form({
-                      id : '',
-                      category : '',
-                      name: '',
-                      description: '',
-                      tags:  [],
-                      photo: '',
-                      category_id: '',
-                      user_id:'',
-                      address: '',
-                      photoUrl: '',
-                  }),
-                  categories: [],
-                  users:[],
-                  tag:  '',
-                  autocompleteItems: [],
-              }
+          
+
+        },
+        mounted() {
+            
+        },
+        created() {
+            this.$Progress.start();
+            this.loadStudents();
+           
+        },
+        filters: {
+            truncate: function (text, length, suffix) {
+                return text.substring(0, length) + suffix;
+            },
+        },
+        computed: {
+          filteredItems() {
+            return this.autocompleteItems.filter(i => {
+              return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
+            });
           },
-          methods: {
-  
-            getResults(page = 1) {
-  
-                this.$Progress.start();
-                
-                axios.get('api/student?page=' + page).then(({ data }) => (this.students = data.data));
-  
-                this.$Progress.finish();
-            },
-            loadStudents(){
-  
-              // if(this.$gate.isAdmin()){
-                axios.get("api/student").then(({ data }) => (this.students = data.data));
-              // }
-            },
-            loadCategories(){
-                axios.get("/api/category/list").then(({ data }) => (this.categories = data.data));
-            },
-            loadTags(){
-                axios.get("/api/tag/list").then(response => {
-                    this.autocompleteItems = response.data.data.map(a => {
-                        return { text: a.name, id: a.id };
-                    });
-                }).catch(() => console.warn('Oh. Something went wrong'));
-            },
-            loadUsers(){
-                axios.get("/api/user/list").then(({ data }) => (this.users = data.data));
-            },
-            editModal(student){
-                this.editmode = true;
-                this.form.reset();
-                $('#addNew').modal('show');
-                this.form.fill(student);
-            },
-            newModal(){
-                this.editmode = false;
-                this.form.reset();
-                $('#addNew').modal('show');
-            },
-            createProduct(){
-                this.$Progress.start();
-  
-                this.form.post('api/student')
-                .then((data)=>{
-                  if(data.data.success){
-                    $('#addNew').modal('hide');
-  
-                    Toast.fire({
-                          icon: 'success',
-                          title: data.data.message
-                      });
-                    this.$Progress.finish();
-                    this.loadStudents();
-  
-                  } else {
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'Some error occured! Please try again'
-                    });
-  
-                    this.$Progress.failed();
-                  }
-                })
-                .catch(()=>{
-  
-                    Toast.fire({
-                        icon: 'error',
-                        title: 'Some error occured! Please try again'
-                    });
-                })
-            },
-            updateProduct(){
-                this.$Progress.start();
-                this.form.put('api/student/'+this.form.id)
-                .then((response) => {
-                    // success
-                    $('#addNew').modal('hide');
-                    Toast.fire({
-                      icon: 'success',
-                      title: response.data.message
-                    });
-                    this.$Progress.finish();
-                        //  Fire.$emit('AfterCreate');
-  
-                    this.loadStudents();
-                })
-                .catch(() => {
-                    this.$Progress.fail();
-                });
-  
-            },
-            deleteProduct(id){
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-  
-                        // Send request to the server
-                          if (result.value) {
-                                this.form.delete('api/student/'+id).then(()=>{
-                                        Swal.fire(
-                                        'Deleted!',
-                                        'Your file has been deleted.',
-                                        'success'
-                                        );
-                                    // Fire.$emit('AfterCreate');
-                                    this.loadStudents();
-                                }).catch((data)=> {
-                                    Swal.fire("Failed!", data.message, "warning");
-                                });
-                          }
-                    })
-            },
-  
-          },
-          mounted() {
-              
-          },
-          created() {
-              this.$Progress.start();
-  
-              this.loadStudents();
-              this.loadCategories();
-              this.loadTags();
-              this.loadUsers();
-              this.$Progress.finish();
-          },
-          filters: {
-              truncate: function (text, length, suffix) {
-                  return text.substring(0, length) + suffix;
-              },
-          },
-          computed: {
-            filteredItems() {
-              return this.autocompleteItems.filter(i => {
-                return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
-              });
-            },
-          },
-      }
-  </script>
-  
+        },
+    }
+</script>
