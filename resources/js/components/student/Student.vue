@@ -40,7 +40,7 @@
                       <td>{{student.category.name}}</td>
                       <td>{{student.address}}</td>
                       <!-- <td><img v-bind:src="'/' + student.photo" width="100" alt="student"></td> -->
-                      <td></td>
+                      <td>{{student.phone}}</td>
                       <td>
                         
                         <a href="#" @click="editModal(student)">
