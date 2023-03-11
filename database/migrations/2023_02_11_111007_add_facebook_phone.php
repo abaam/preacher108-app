@@ -26,7 +26,11 @@ class AddFacebookPhone extends Migration
      */
     public function down()
     {
-        $table->dropColumn('fb_link');
-        $table->dropColumn('phone');
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('fb_link');
+             $table->dropColumn('phone');
+        });
+    }
+        
     }
 }
