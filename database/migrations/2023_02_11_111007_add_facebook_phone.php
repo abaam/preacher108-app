@@ -30,7 +30,6 @@ class AddFacebookPhone extends Migration
             $table->dropColumn('fb_link');
              $table->dropColumn('phone');
         });
-    }
         
     }
 }
